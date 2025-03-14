@@ -1,75 +1,70 @@
+"use client";
 import React, { useCallback } from "react";
-import { CurrentSlideData, Data } from "@/app/page";
+
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Progress from "@/components/Progress";
+import { useDispatch, useSelector } from "@/store/store";
+import { sliderData } from "@/data";
 
-interface Props {
-  currentSlideData: CurrentSlideData;
-  data: Data[];
-  transitionData: Data;
-  handleData: React.Dispatch<React.SetStateAction<Data[]>>;
-  handleTransitionData: React.Dispatch<React.SetStateAction<Data>>;
-  handleCurrentSlideData: React.Dispatch<
-    React.SetStateAction<CurrentSlideData>
-  >;
-  sliderData: Data[];
-}
+const Controls = () => {
+  const { currentSlideData, data, transitionData } = useSelector(
+    (state) => state.banner
+  );
 
-const Controls = ({
-  currentSlideData,
-  data,
-  transitionData,
-  handleCurrentSlideData,
-  handleData,
-  handleTransitionData,
-  sliderData,
-}: Props) => {
+  const dispatch = useDispatch();
   const handlePrev = useCallback(() => {
     if (data.length === 0) return;
 
     const newTransitionData = data[data.length - 1];
-    handleData((prevData) => [
-      transitionData,
-      ...prevData.slice(0, prevData.length - 1),
-    ]);
-    handleTransitionData(newTransitionData);
-
-    handleCurrentSlideData({
-      data: newTransitionData,
-      index: sliderData.findIndex((ele) => ele.img === newTransitionData.img),
+    dispatch({
+      type: "SET_DATA",
+      payload: [transitionData, ...data.slice(0, data.length - 1)],
     });
-  }, [
-    data,
-    transitionData,
-    handleData,
-    handleTransitionData,
-    handleCurrentSlideData,
-    sliderData,
-  ]);
+
+    dispatch({
+      type: "SET_TRANSITION_DATA",
+      payload: newTransitionData,
+    });
+
+    dispatch({
+      type: "SET_CURRENT_SLIDE_DATA",
+      payload: {
+        data: newTransitionData,
+        index: sliderData.findIndex((ele) => ele.img === newTransitionData.img),
+      },
+    });
+  }, [data, transitionData, dispatch]);
 
   const handleNext = useCallback(() => {
     if (data.length === 0) return;
 
     const newTransitionData = data[0];
-    handleData((prevData) => prevData.slice(1));
-    handleTransitionData(newTransitionData);
 
-    handleCurrentSlideData({
-      data: newTransitionData,
-      index: sliderData.findIndex((ele) => ele.img === newTransitionData.img),
+    dispatch({
+      type: "SET_DATA",
+      payload: data.slice(1),
+    });
+
+    dispatch({
+      type: "SET_TRANSITION_DATA",
+      payload: newTransitionData,
+    });
+
+    dispatch({
+      type: "SET_CURRENT_SLIDE_DATA",
+      payload: {
+        data: newTransitionData,
+        index: sliderData.findIndex((ele) => ele.img === newTransitionData.img),
+      },
     });
 
     setTimeout(() => {
-      handleData((newData) => [...newData, transitionData]);
+      dispatch({
+        type: "SET_DATA",
+        payload: [...data.slice(1), newTransitionData],
+      });
     }, 1000);
-  }, [
-    data,
-    transitionData,
-    handleData,
-    handleTransitionData,
-    handleCurrentSlideData,
-    sliderData,
-  ]);
+  }, [data, dispatch]);
 
   return (
     <div className="flex items-center gap-3 px-0 py-3 md:px-1 md:py-5">

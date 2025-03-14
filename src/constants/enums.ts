@@ -1,0 +1,7 @@
+enum ActionTypes {
+  SET_DATA = "SET_DATA",
+  SET_TRANSITION_DATA = "SET_TRANSITION_DATA",
+  SET_CURRENT_SLIDE_DATA = "SET_CURRENT_SLIDE_DATA",
+}
+
+export { ActionTypes };

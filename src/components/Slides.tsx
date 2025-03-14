@@ -1,8 +1,10 @@
-import { Data } from "@/app/page";
+"use client";
 import React from "react";
 import SliderCard from "@/components/SliderCard";
+import { useSelector } from "@/store/store";
 
-const Slides = ({ data }: { data: Data[] }) => {
+const Slides = () => {
+  const { data } = useSelector((state) => state.banner);
   return (
     <div className="flex w-full gap-6">
       {data.map((data) => {

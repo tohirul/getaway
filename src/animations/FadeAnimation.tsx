@@ -1,16 +1,17 @@
 "use client";
+import { useSelector } from "@/store/store";
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 interface Props {
   children: React.ReactNode;
-  index: number;
   className?: string;
 }
-const FadeAnimation = ({ children, index, className = "" }: Props) => {
+const FadeAnimation = ({ children, className = "" }: Props) => {
+  const { currentSlideData } = useSelector((state) => state.banner);
   return (
     <AnimatePresence mode="wait">
       <motion.div
-        key={index}
+        key={currentSlideData.index}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}

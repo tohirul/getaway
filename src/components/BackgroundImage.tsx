@@ -1,20 +1,18 @@
 "use client";
 import React from "react";
-import { CurrentSlideData, Data } from "@/app/page";
-import { motion } from "framer-motion";
+import ImageAnimation from "@/animations/ImageAnimation";
+import { useSelector } from "@/store/store";
 
-interface Props {
-  transitionData: Data;
-  currentSlideData: CurrentSlideData;
-}
+const BackgroundImage = () => {
+  const { transitionData, currentSlideData } = useSelector(
+    (state) => state.banner
+  );
 
-const BackgroundImage = ({ transitionData, currentSlideData }: Props) => {
-  // console.log(props);
   return (
     <React.Fragment>
       {transitionData && (
-        <motion.img
-          key={transitionData.img}
+        <ImageAnimation
+          keyring={transitionData.img}
           layoutId={transitionData.title + transitionData.img}
           alt={`A picture of ${transitionData.title}`}
           transition={{
@@ -25,9 +23,9 @@ const BackgroundImage = ({ transitionData, currentSlideData }: Props) => {
           src={transitionData.img}
         />
       )}
-      <motion.img
+      <ImageAnimation
         alt="Current Image"
-        key={currentSlideData.data.img + "transition"}
+        keyring={currentSlideData.data.img + "transition"}
         src={currentSlideData.data.img}
         className="absolute left-0 top-0 h-full w-full object-cover brightness-50"
       />

@@ -1,50 +1,33 @@
-"use client";
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { IoIosGlobe, IoMdSearch, IoMdPerson } from "react-icons/io";
-import Head from "next/head";
+import FadeAnimation from "@/animations/FadeAnimation";
+import React from "react";
+import BackgroundImage from "./BackgroundImage";
+import Navigation from "./Navigation";
+import SlideInfo from "./SlideInfo";
+import Slides from "./Slides";
+import Controls from "./Controls";
 
 const Header = () => {
-  const [active, setActive] = useState(0);
   return (
-    <div className="absolute mt-5 flex w-full flex-wrap items-center justify-between gap-2 px-5 text-xs font-medium uppercase opacity-90 md:px-10">
-      <Head>
-        <title>GET AWAY</title>
-      </Head>
-      <div className="flex items-center gap-2 font-medium tracking-[4px]">
-        <IoIosGlobe className="text-xl" /> Travel
-      </div>
-      <ul className="flex flex-wrap items-center gap-3 text-[11px] md:gap-10">
-        {menus.map((menu, index) => {
-          return (
-            <motion.li
-              layout
-              key={menu + index}
-              className={`${
-                active === index ? "border-b-2 border-b-yellow-500" : ""
-              } inline-block cursor-pointer border-b-yellow-500 transition duration-300 ease-in-out hover:border-b-2 hover:text-white`}
-              onClick={() => setActive(index)}
-            >
-              {menu}
-            </motion.li>
-          );
-        })}
-        <div className="flex items-center gap-6">
-          <IoMdSearch className="text-lg" />
-          <IoMdPerson className="text-lg" />
+    <React.Fragment>
+      <FadeAnimation className="absolute z-10 w-full h-full">
+        <BackgroundImage />
+      </FadeAnimation>
+      <div className="absolute z-20 h-full w-full">
+        <Navigation />
+        <div className="flex h-full w-full grid-cols-10 flex-col md:grid">
+          <div className="col-span-4 mb-3 flex h-full flex-1 flex-col justify-end px-5 md:mb-0 md:justify-center md:px-10">
+            <FadeAnimation>
+              <SlideInfo />
+            </FadeAnimation>
+          </div>
+          <div className="col-span-6 flex h-full flex-1 flex-col justify-start p-4 md:justify-center md:p-10">
+            <Slides />
+            <Controls />
+          </div>
         </div>
-      </ul>
-    </div>
+      </div>
+    </React.Fragment>
   );
 };
 
 export default Header;
-
-const menus = [
-  "Home",
-  "Holidays",
-  "Destinations",
-  "Flights",
-  "Offers",
-  "Contacts",
-];

@@ -3,15 +3,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import { IoMdBookmark } from "react-icons/io";
 
-import { Data, CurrentSlideData } from "@/app/page";
 import OtherInfo from "@/components/OtherInfo";
+import { useSelector } from "@/store/store";
 
-interface Props {
-  transitionData: Data;
-  currentSlideData: CurrentSlideData;
-}
-
-const SlideInfo = ({ transitionData, currentSlideData }: Props) => {
+const SlideInfo = () => {
+  const { transitionData, currentSlideData } = useSelector(
+    (state) => state.banner
+  );
   return (
     <React.Fragment>
       <motion.span layout className="mb-2 h-1 w-5 rounded-full bg-white" />

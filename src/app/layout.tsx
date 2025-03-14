@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Righteous } from "next/font/google";
 import "./globals.css";
+import ContextProvider from "@/providers/ContextProvider";
+import Header from "@/components/Header";
 
 const inter = Righteous({
   subsets: ["latin"],
@@ -22,7 +24,10 @@ export default function RootLayout({
       <body
         className={` ${inter.className} relative min-h-screen select-none overflow-hidden text-white antialiased`}
       >
-        {children}
+        <ContextProvider>
+          <Header />
+          {children}
+        </ContextProvider>
       </body>
     </html>
   );
