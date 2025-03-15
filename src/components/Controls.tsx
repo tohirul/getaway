@@ -40,16 +40,11 @@ const Controls = () => {
 
     const newTransitionData = data[0];
 
-    dispatch({
-      type: "SET_DATA",
-      payload: data.slice(1),
-    });
+    // Remove first element from `data`
+    const newData = data.slice(1);
 
-    dispatch({
-      type: "SET_TRANSITION_DATA",
-      payload: newTransitionData,
-    });
-
+    dispatch({ type: "SET_DATA", payload: newData });
+    dispatch({ type: "SET_TRANSITION_DATA", payload: newTransitionData });
     dispatch({
       type: "SET_CURRENT_SLIDE_DATA",
       payload: {
@@ -61,10 +56,10 @@ const Controls = () => {
     setTimeout(() => {
       dispatch({
         type: "SET_DATA",
-        payload: [...data.slice(1), newTransitionData],
+        payload: [...newData, transitionData], // Append newTransitionData
       });
-    }, 1000);
-  }, [data, dispatch]);
+    }, 50);
+  }, [data, dispatch, transitionData]);
 
   return (
     <div className="flex items-center gap-3 px-0 py-3 md:px-1 md:py-5">

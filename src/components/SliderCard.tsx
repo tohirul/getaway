@@ -1,5 +1,5 @@
 "use client";
-import { Data } from "@/app/page";
+import { Data } from "@/app/(root)/page";
 import { motion } from "framer-motion";
 import React from "react";
 

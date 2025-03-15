@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { Data } from "@/app/page";
+import { Data } from "@/app/(root)/page";
 
 interface Props {
   data: Data;

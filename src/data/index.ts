@@ -7,6 +7,13 @@ export const sliderData = [
       "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam officiis aliquam aperiam officia numquam hic accusantium autem porro id!",
   },
   {
+    img: "/2.png",
+    location: "Egypt",
+    title: "Pyramids of Giza",
+    description:
+      "Pyramids of Giza,Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae est atque perspiciatis reprehenderit recusandae.",
+  },
+  {
     img: "/3.png",
     location: "Villa Rose",
     title: "MASAI MARA",

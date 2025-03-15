@@ -2,6 +2,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import { IoIosGlobe, IoMdSearch, IoMdPerson } from "react-icons/io";
+import StickyNavAnimation from "@/animations/StickyNavAnimation";
 
 const menus = [
   "Home",
@@ -14,16 +15,17 @@ const menus = [
 
 export default async function Navigation() {
   return (
-    <div className="absolute mt-5 flex w-full flex-wrap items-center justify-between gap-2 px-5 text-xs font-medium uppercase opacity-90 md:px-10">
+    <StickyNavAnimation>
       <Head>
-        <title>GET AWAY</title>
+        <title>GETAWAY</title>
       </Head>
 
       <div className="flex items-center gap-2 font-medium tracking-[4px]">
-        <IoIosGlobe className="text-xl" /> Travel
+        <IoIosGlobe className="text-xl" />
+        Getaway
       </div>
 
-      <ul className="flex flex-wrap items-center gap-3 text-[11px] md:gap-10">
+      <ul className="flex flex-wrap items-center gap-3 text-sm md:gap-10">
         {menus.map((menu, index) => (
           <li key={menu + index}>
             <Link
@@ -39,6 +41,6 @@ export default async function Navigation() {
           <IoMdPerson className="text-lg" />
         </div>
       </ul>
-    </div>
+    </StickyNavAnimation>
   );
 }

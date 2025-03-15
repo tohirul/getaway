@@ -15,5 +15,9 @@ export type CurrentSlideData = {
 };
 
 export default async function Home() {
-  return <div> This is home </div>;
+  return (
+    <div className="w-screen h-[100vh] flex justify-center items-center z-1000">
+      <h1>Getaway | Home</h1>
+    </div>
+  );
 }

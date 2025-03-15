@@ -12,6 +12,8 @@ export const StoreContext = createContext<StoreContextType | undefined>(
 // Custom hook to use the store
 export const useStore = () => {
   const context = useContext(StoreContext);
+  const banner = context?.getValue((state) => state.banner);
+  console.log("Banner: ", banner);
   if (!context) {
     throw new Error("useStore must be used within a StoreProvider");
   }
