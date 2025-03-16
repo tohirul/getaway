@@ -21,7 +21,7 @@ export default function Layout({
   return (
     <html lang="en">
       <body
-        className={` ${inter.className} select-none overflow-x-hidden text-white antialiased`}
+        className={` ${inter.className} select-none overflow-x-hidden antialiased`}
       >
         <ContextProvider>{children}</ContextProvider>
       </body>

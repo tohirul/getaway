@@ -1,5 +1,7 @@
 // lib/getData.ts (Server Utility)
 import { sliderData } from "@/data";
+import clsx, { ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export async function getInitialBannerData() {
   return {
@@ -20,4 +22,8 @@ export async function getInitialBannerData() {
       index: 0,
     },
   };
+}
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
 }

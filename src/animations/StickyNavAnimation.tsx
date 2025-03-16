@@ -47,8 +47,8 @@ const StickyNavAnimation = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <motion.div
-      className={`absolute flex w-full flex-wrap items-center justify-between gap-2 px-5 py-8 text-xs font-medium uppercase md:px-10 ${
-        isSticky ? "fixed top-0 left-0 z-50" : ""
+      className={`absolute flex w-full flex-wrap items-center justify-between gap-2 px-5 py-4 text-xs font-medium uppercase md:px-10 ${
+        isSticky ? "fixed top-0 left-0 z-50 bg-white text-background" : ""
       }`}
       initial={{ opacity: 1, y: 0 }} // Initially at y: 0
       animate={{
