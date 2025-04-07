@@ -26,12 +26,11 @@ const NavLinks = ({ menus }: { menus: Array<string> }) => {
     },
     []
   );
-  console.log(cursorColor);
 
   return (
     <div className="flex gap-4">
       <ul
-        className="flex flex-wrap items-center gap-3 text-sm md:gap-10 w-max"
+        className="w-max md:gap-10  flex flex-wrap items-center gap-3 relative text-sm"
         onMouseLeave={() =>
           updateCursorPosition({ ...cursorRef.current, opacity: 0, width: 0 })
         }
@@ -124,7 +123,7 @@ const NavLink = ({
           text={menu}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.8, ease: "easeInOut" }}
+          transition={{ duration: 0.4, delay: 0.1, ease: "easeInOut" }}
         >
           <TextColorAnimation
             name={menu}

@@ -8,42 +8,29 @@ const StickyNavAnimation = ({ children }: { children: React.ReactNode }) => {
   const [yPosition, setYPosition] = useState(0);
   useEffect(() => {
     const handleScroll = () => {
-      if (window.innerHeight / 2 > window.scrollY && window.scrollY > 0) {
-        setIsVisible(false);
-        setYPosition(-100);
-      } else {
-      }
-      if (window.scrollY >= window.innerHeight) {
-        if (!isSticky) {
-          setIsSticky(true);
-          setYPosition(0);
-        }
-        if (isVisible) {
-          setIsVisible(true);
-        }
-      } else if (window.scrollY === 0) {
-        if (isSticky) {
-          setIsSticky(false);
-        }
-        if (!isVisible) {
-          setIsVisible(true);
-        }
+      const { scrollY } = window;
+      const halfViewport = window.innerHeight / 2;
 
-        setYPosition(0);
-      } else {
-        if (isSticky) {
-          setIsSticky(false);
-        }
-        if (!isVisible) {
-          setIsVisible(true);
-        }
-      }
+      const shouldHide = scrollY > 0 && scrollY < halfViewport;
+      const shouldStick = scrollY >= window.innerHeight;
+
+      setIsVisible(!shouldHide);
+      setYPosition(shouldHide ? -500 : 0);
+      setIsSticky(shouldStick);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    const onScroll = () => {
+      // Use RAF for smoother performance
+      requestAnimationFrame(handleScroll);
+    };
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isSticky, isVisible]); // Add these to dependencies to avoid stale state
+    window.addEventListener("scroll", onScroll);
+    handleScroll(); // Run once on mount
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []); // Add these to dependencies to avoid stale state
 
   return (
     <motion.div
