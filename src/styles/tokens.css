@@ -1,0 +1,23 @@
+@theme {
+  --color-primary: #ffe502;
+  --color-bright: #ffffff;
+  --color-dark: #000000;
+
+  --typography-bright: #000000;
+  --typography-dark: #ffffff;
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+.dark {
+  --color-primary: #ffe502;
+  --color-bright: #000000;
+  --color-dark: #ffffff;
+
+  --typography-bright: #ffffff;
+  --typography-dark: #000000;
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}

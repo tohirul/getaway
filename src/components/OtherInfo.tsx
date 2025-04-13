@@ -20,19 +20,17 @@ const item = {
 
 const OtherInfo = ({ data }: Props) => {
   return (
-    <motion.div initial="hidden" animate={"visible"} className="flex flex-col">
-      <AnimatedText
-        className="spacing overflow-hidden text-[#D5D5D6]"
-        data={data?.location}
-      />
+    <motion.div
+      initial="hidden"
+      animate={"visible"}
+      className="flex flex-col text-bright"
+    >
+      <AnimatedText className="spacing overflow-hidden" data={data?.location} />
       <AnimatedText
         className="my-1 text-4xl font-semibold md:my-3 md:text-8xl md:leading-[100px]"
         data={data?.title}
       />
-      <AnimatedText
-        className="text-xs md:text-base text-[#D5D5D6]"
-        data={data?.description}
-      />
+      <AnimatedText className="text-xs md:text-base" data={data?.description} />
     </motion.div>
   );
 };

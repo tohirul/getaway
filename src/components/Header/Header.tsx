@@ -1,11 +1,11 @@
 "use server";
 import FadeAnimation from "@/animations/FadeAnimation";
 import React from "react";
-import BackgroundImage from "./BackgroundImage";
-import Navigation from "./Navigation";
-import SlideInfo from "./SlideInfo";
-import Slides from "./Slides";
-import Controls from "./Controls";
+import BackgroundImage from "../BackgroundImage";
+import Navigation from "../Navigation/Navigation";
+import SlideInfo from "../SlideInfo";
+import Slides from "../Slides";
+import Controls from "../Controls";
 import ScrollHeaderAnimation from "@/animations/ScrollHeaderAnimation";
 
 const Header = () => {

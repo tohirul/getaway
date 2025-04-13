@@ -9,5 +9,11 @@ export default function NavLinkHoverAnimation({
   cursorPosition: { left: number; width: number; opacity: number };
   className?: string;
 }) {
-  return <motion.li animate={cursorPosition} className={className} />;
+  return (
+    <motion.li
+      animate={cursorPosition}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+      className={className}
+    />
+  );
 }

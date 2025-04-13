@@ -12,7 +12,7 @@ const FadeAnimation = ({ children, className = "" }: Props) => {
     <AnimatePresence mode="wait">
       <motion.div
         key={currentSlideData.index}
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 0.9 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
         className={className}

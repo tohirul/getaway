@@ -9,7 +9,7 @@ export const sliderData = [
   {
     img: "/2.png",
     location: "Egypt",
-    title: "Pyramids of Giza",
+    title: "Giza Pyramids",
     description:
       "Pyramids of Giza,Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae est atque perspiciatis reprehenderit recusandae.",
   },
@@ -37,7 +37,7 @@ export const sliderData = [
   {
     img: "/6.png",
     location: "Cartago",
-    title: "CARTAGO CAMP",
+    title: "CARTAGO",
     description:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae est atque perspiciatis reprehenderit recusandae.",
   },

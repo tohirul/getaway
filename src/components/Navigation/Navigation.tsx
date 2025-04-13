@@ -3,7 +3,7 @@ import Head from "next/head";
 
 import { IoIosGlobe } from "react-icons/io";
 import StickyNavAnimation from "@/animations/StickyNavAnimation";
-import NavLinks from "./NavLinks";
+import NavLinks from "@/components/Navigation/NavLinks";
 
 const menus = [
   "Home",

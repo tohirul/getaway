@@ -1,0 +1,24 @@
+/* Example override */
+@layer base {
+  body {
+    font-family: var(--font-sans), sans-serif;
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) var(--color-dark);
+  }
+}

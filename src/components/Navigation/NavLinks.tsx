@@ -3,12 +3,13 @@ import FadeInAnimation from "@/animations/FadeInAnimation";
 import NavLinkHoverAnimation from "@/animations/NavLinkHoverAnimation";
 import TextColorAnimation from "@/animations/TextColorAnimation";
 import { cn } from "@/lib/utility";
+import Hydration from "@/providers/HydrationProvider";
+
 import Link from "next/link";
 import React, { useCallback, useRef, useState } from "react";
 import { IoMdSearch, IoMdPerson } from "react-icons/io";
 
 const NavLinks = ({ menus }: { menus: Array<string> }) => {
-  //   console.log("NavLinks", menus);
   const [cursorColor, setCursorColor] = useState("bg-transparent");
   const cursorRef = useRef({ left: 0, width: 0, opacity: 0 });
   const [cursorPosition, setCursorPosition] = useState(cursorRef.current);
@@ -28,35 +29,37 @@ const NavLinks = ({ menus }: { menus: Array<string> }) => {
   );
 
   return (
-    <div className="flex gap-4">
-      <ul
-        className="w-max md:gap-10  flex flex-wrap items-center gap-3 relative text-sm"
-        onMouseLeave={() =>
-          updateCursorPosition({ ...cursorRef.current, opacity: 0, width: 0 })
-        }
-      >
-        {menus.map((menu, index) => (
-          <MemoizedNavLink
-            key={index}
-            menu={menu}
-            setCursorPosition={updateCursorPosition}
-            setCursorColor={setCursorColor}
-            className="text-black"
+    <Hydration>
+      <div className="flex gap-4">
+        <ul
+          className="w-max md:gap-10  flex flex-wrap items-center gap-3 relative text-sm"
+          onMouseLeave={() =>
+            updateCursorPosition({ ...cursorRef.current, opacity: 0, width: 0 })
+          }
+        >
+          {menus.map((menu, index) => (
+            <MemoizedNavLink
+              key={index}
+              menu={menu}
+              setCursorPosition={updateCursorPosition}
+              setCursorColor={setCursorColor}
+              className="hover:text-dark"
+            />
+          ))}
+          <MemoizedCursor
+            cursorPosition={cursorPosition}
+            className={cn(
+              "t-0 absolute z-0 my-1 h-8 rounded-full",
+              cursorColor
+            )}
           />
-        ))}
-        <MemoizedCursor
-          cursorPosition={cursorPosition}
-          className={cn(
-            "t-0 absolute z-0 my-1 h-8 rounded-full py-1",
-            cursorColor
-          )}
-        />
-      </ul>
-      <div className="flex items-center gap-6">
-        <IoMdSearch className="text-lg" />
-        <IoMdPerson className="text-lg" />
+        </ul>
+        <div className="flex items-center gap-6">
+          <IoMdSearch className="text-lg" />
+          <IoMdPerson className="text-lg" />
+        </div>
       </div>
-    </div>
+    </Hydration>
   );
 };
 

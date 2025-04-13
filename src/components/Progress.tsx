@@ -33,7 +33,7 @@ const Progress = ({
             duration: 0.6,
             ease: "easeInOut",
           }}
-          className="flex items-center text-4xl font-medium"
+          className="flex items-center text-4xl font-medium text-bright"
         >
           0{currentIndex + 1}
         </motion.div>

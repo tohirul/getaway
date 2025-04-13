@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 
-import Header from "@/components/Header";
+import Header from "@/components/Header/Header";
 
 // Define props for the layout component, adjusting based on Next.js expectations
 interface RootLayoutProps {

@@ -88,7 +88,7 @@ const SliderButton = ({
 }) => {
   return (
     <button
-      className="flex h-14 w-14 items-center justify-center rounded-full border border-[#fdfdfd5f] transition-colors duration-300 ease-in-out hover:bg-white hover:text-black"
+      className="flex h-14 w-14 items-center justify-center rounded-full border border-[#fdfdfd5f] transition-colors duration-300 ease-in-out bg-primary hover:bg-white hover:text-black"
       onClick={handleClick}
     >
       {children}

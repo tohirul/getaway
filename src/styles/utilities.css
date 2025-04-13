@@ -1,0 +1,18 @@
+/* Example custom utility */
+@layer utilities {
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+  .text-primary {
+    color: var(--color-primary);
+  }
+  .text-secondary {
+    color: var(--color-secondary);
+  }
+  .text-accent {
+    color: var(--color-accent);
+  }
+  .color-default {
+    @apply bg-bright dark:bg-dark text-[var(--typography-bright)] dark:text-[var(--typography-dark)];
+  }
+}
